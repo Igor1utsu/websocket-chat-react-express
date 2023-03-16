@@ -1,0 +1,32 @@
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgb(0, 166, 255);
+
+  &__window {
+    min-height: 80vh;
+    padding: 10px;
+    flex: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__field {
+    display: flex;
+  }
+
+  .field {
+    &__input {
+      padding-left: 10px;
+      padding-right: 10px;
+      flex: 1;
+    }
+
+    &__button {
+      padding: 4px 15px;
+    }
+  }
+}
