@@ -1,24 +1,23 @@
+import moment from "moment"
 import { FC, memo } from "react"
+import { IMessage } from "../../../shared/models/IMessage.model"
 import "./Message.scss"
 
-interface MessageProps {
-  user: string
-  message?: string
-  event: string
-}
+export const Message: FC<IMessage> = memo((props) => {
+  const { id, userName, message, event } = props
 
-export const Message: FC<MessageProps> = memo((props) => {
-  const { user, message, event } = props
+  const date = moment(id).format("LT") // 9:23 PM
 
   if (event === "connection")
     return (
-      <li className="message__connection">{`user ${user} has connected`}</li>
+      <li className="message__connection">{`user ${userName} has connected`}</li>
     )
 
   return (
     <li className="message">
-      <div className="message__user">{user}</div>
+      <div className="message__user">{userName}</div>
       <div className="message__text"> {message}</div>
+      <div className="message__date"> {date}</div>
     </li>
   )
 })

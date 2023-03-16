@@ -56,7 +56,8 @@ export const Content: FC = memo(() => {
             <ul className="content__window">
               {message.map((i) => (
                 <Message
-                  user={i.userName}
+                  id={i.id}
+                  userName={i.userName}
                   message={i.message}
                   event={i.event}
                   key={i.id}
