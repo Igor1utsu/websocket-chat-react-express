@@ -1,13 +1,20 @@
 .content {
   width: 100%;
+  max-height: calc(100vh - 10px);
+  margin: 5px;
   display: flex;
   flex-direction: column;
   background: rgb(0, 166, 255);
+  border-radius: 14px;
+  overflow: hidden;
 
   &__window {
     min-height: 80vh;
     padding: 10px;
+    display: flex;
+    flex-direction: column-reverse;
     background: white;
+    overflow-y: auto;
   }
 
   &__field {
@@ -15,14 +22,32 @@
   }
 
   .field {
+    min-height: 32px;
     &__input {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
       flex: 1;
+      border: 1px rgb(125, 125, 125) solid;
+      border-radius: 14px 0 0 14px;
+      
+      &--chat {
+        border-radius: 0 0 0 14px;
+      }
     }
 
     &__button {
-      padding: 4px 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border: 1px rgb(125, 125, 125) solid;
+      border-radius: 0 14px 14px 0;
+
+      &:hover {
+        background: rgb(162, 223, 255);
+      }
+
+      &--chat {
+        border-radius: 0 0 14px 0;
+      }
     }
   }
 }

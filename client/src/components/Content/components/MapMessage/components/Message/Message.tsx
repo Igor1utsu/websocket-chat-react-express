@@ -10,9 +10,9 @@ export const Message: FC<IMessage> = memo((props) => {
 
   return (
     <li className="mess">
-      <div className="mess__user">{userName}</div>
-      <div className="mess__text"> {message}</div>
-      <div className="mess__date"> {date}</div>
+      <span className="mess__user">{userName}</span>
+      <p className="mess__text"> {message}</p>
+      <span className="mess__date"> {date}</span>
     </li>
   )
 })

@@ -69,12 +69,12 @@ export const Content: FC = memo(() => {
             </div>
             <form className="content__field field" onSubmit={handleMessage}>
               <input
-                className="field__input"
+                className="field__input field__input--chat"
                 value={inputValue}
                 placeholder="Write a message"
                 onChange={(e) => setInputValue(e.target.value)}
               ></input>
-              <button type="submit" className="field__button">
+              <button type="submit" className="field__button field__button--chat">
                 Send
               </button>
             </form>

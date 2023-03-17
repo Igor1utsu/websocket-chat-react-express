@@ -3,13 +3,17 @@
   flex-direction: column;
   align-items: flex-start;
 
+  & > * + * {
+    margin-top: 10px;
+  }
+
   .mess-day {
     padding: 4px 10px;
-    margin: 4px auto;
+    align-self: center;
     border-radius: 13px;
+    font-size: 14px;
     background: rgb(236, 236, 236);
     color: rgb(125, 125, 125);
-    font-size: 14px;
   }
 
   .mess-connection {
