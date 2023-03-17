@@ -1,16 +1,10 @@
-.message {
+.mess {
   margin-bottom: 10px;
   padding: 5px 7px 7px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   background: rgb(238, 238, 238);
-
-  &__connection {
-    align-self: center;
-    font-size: 14px;
-    color: rgb(125, 125, 125);
-  }
 
   &__user {
     font-size: 12px;

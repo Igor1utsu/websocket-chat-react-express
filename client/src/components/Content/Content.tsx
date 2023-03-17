@@ -1,13 +1,16 @@
+import moment from "moment"
 import React, { FC, memo, useRef, useState } from "react"
 import { IMessage } from "../../shared/models/IMessage.model"
 import { sendMessage } from "../../shared/utils/SendMessage.utils"
-import { Message } from "./components/Message"
+import { MapMessage } from "./components/MapMessage/MapMessage"
 import "./Content.scss"
 
 export const Content: FC = memo(() => {
   const [connected, setConnected] = useState<boolean>(false)
   const [userName, setUserName] = useState<string>("")
-  const [message, setMessage] = useState<IMessage[]>([])
+  const [messageMap, setMessageMap] = useState<Map<string, IMessage[]>>(
+    new Map()
+  )
   const [inputValue, setInputValue] = useState<string>("")
   const socket = useRef<WebSocket>()
 
@@ -26,7 +29,13 @@ export const Content: FC = memo(() => {
     socket.current.onmessage = (e) => {
       const message = JSON.parse(e.data)
 
-      setMessage((prev) => [message, ...prev])
+      const date = moment(message.id).format("LL")
+
+      setMessageMap((prev) => {
+        const update = new Map(prev)
+        const prevMessages = update.get(date) ?? []
+        return update.set(date, [...prevMessages, message])
+      })
     }
 
     socket.current.onclose = () => {
@@ -53,17 +62,11 @@ export const Content: FC = memo(() => {
       <div className="content">
         {connected ? (
           <>
-            <ul className="content__window">
-              {message.map((i) => (
-                <Message
-                  id={i.id}
-                  userName={i.userName}
-                  message={i.message}
-                  event={i.event}
-                  key={i.id}
-                />
+            <div className="content__window">
+              {Array.from(messageMap.keys()).map((i) => (
+                <MapMessage day={i} list={messageMap.get(i) ?? []} key={i} />
               ))}
-            </ul>
+            </div>
             <form className="content__field field" onSubmit={handleMessage}>
               <input
                 className="field__input"
