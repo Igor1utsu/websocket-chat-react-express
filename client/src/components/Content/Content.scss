@@ -4,6 +4,7 @@
   margin: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background: rgb(0, 166, 255);
   border-radius: 14px;
   overflow: hidden;
@@ -15,21 +16,23 @@
     flex-direction: column-reverse;
     background: white;
     overflow-y: auto;
+    border-bottom: 1px rgb(125, 125, 125) solid;
   }
 
   &__field {
     display: flex;
   }
-
+  
   .field {
     min-height: 32px;
     &__input {
       padding-left: 20px;
       padding-right: 20px;
       flex: 1;
-      border: 1px rgb(125, 125, 125) solid;
+      border: 0;
+      border-right: 1px rgb(125, 125, 125) solid;
       border-radius: 14px 0 0 14px;
-      
+
       &--chat {
         border-radius: 0 0 0 14px;
       }
@@ -40,6 +43,8 @@
       padding-right: 15px;
       border: 1px rgb(125, 125, 125) solid;
       border-radius: 0 14px 14px 0;
+      border: 0;
+      white-space: nowrap;
 
       &:hover {
         background: rgb(162, 223, 255);
