@@ -1,0 +1,29 @@
+version: '3'
+services:
+  frontend:
+    depends_on:
+        - backend
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - chat-network
+    volumes:
+      - ./client:/usr/src/app
+    command: npm start
+    tty: true
+    stdin_open: true
+  backend:
+    build: ./server
+    ports:
+      - "8080:8080"
+    networks:
+      - chat-network
+    volumes:
+      - ./server:/usr/src/app
+    command: npm start
+networks:
+  chat-network:
+    driver: bridge
